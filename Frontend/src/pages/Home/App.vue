@@ -1,24 +1,12 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/line">Line</router-link> |
-      <router-link to="/bar">Bar</router-link> |
-      <router-link to="/doughnut">Doughnut</router-link> |
-      <router-link to="/pie">Pie</router-link> |
-      <router-link to="/radar">Radar</router-link> |
-      <router-link to="/polararea">Polar Area</router-link> |
-      <router-link to="/bubble">Bubble</router-link> |
-      <router-link to="/scatter">Scatter</router-link> |
-      
-    </div>
-
-    <router-view />
+    <h1>HELLO</h1>
     <Navbar/>
   </div>
 </template>
 
 <script>
-import Navbar from '../../components/Navbar.vue'
+import Navbar from '../../assets/Navbar.vue'
 
 export default {
   name: 'App',

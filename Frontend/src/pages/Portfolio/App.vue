@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    
     <div id="nav">
       <router-link to="/line">Line</router-link> |
       <router-link to="/bar">Bar</router-link> |
@@ -9,13 +10,25 @@
       <router-link to="/polararea">Polar Area</router-link> |
       <router-link to="/bubble">Bubble</router-link> |
       <router-link to="/scatter">Scatter</router-link> |
-      
     </div>
-
     <router-view />
+    <Navbar/>
 
   </div>
 </template>
+
+<script>
+import Navbar from '../../assets/Navbar.vue'
+
+export default {
+  name: 'App',
+  components: {
+
+    Navbar
+
+  }
+}
+</script>
 
 <style>
   #app {

@@ -5,6 +5,9 @@
       <a id="home" href="index.html">
         <span>HOME</span>
       </a>
+      <a id="portfolio" href="portfolio.html">
+        <span>PORTFOLIO</span>
+      </a>
 <!-- 
       <a id="about" href="about.html">
         <span>ABOUT</span>
