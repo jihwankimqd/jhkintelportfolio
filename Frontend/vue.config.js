@@ -8,6 +8,12 @@ module.exports = {
         title: 'Home',
         chunks: [ 'chunk-vendors', 'chunk-common', 'index' ]
       },
+      'about': {
+        entry: './src/pages/About/main.js',
+        template: 'public/index.html',
+        title: 'About',
+        chunks: [ 'chunk-vendors', 'chunk-common', 'about' ]
+      },
       'portfolio': {
         entry: './src/pages/Portfolio/main.js',
         template: 'public/index.html',

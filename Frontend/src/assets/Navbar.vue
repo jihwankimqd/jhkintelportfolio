@@ -5,21 +5,22 @@
       <a id="home" href="index.html">
         <span>HOME</span>
       </a>
-      <a id="portfolio" href="portfolio.html">
-        <span>PORTFOLIO</span>
-      </a>
-<!-- 
+
       <a id="about" href="about.html">
         <span>ABOUT</span>
       </a>    
-
-      <a id="projects" href="projects.html">
-        <span>PROJECTS</span>
-      </a>      
       
-      <a id="contact" href="contact.html">
-        <span>CONTACT</span>
-      </a>      -->
+      <a id="portfolio" href="portfolio.html">
+        <span>PORTFOLIO</span>
+      </a>
+
+
+
+      <!-- <a id="projects" href="projects.html">
+        <span>PROJECTS</span>
+      </a>       -->
+      
+
     </Slide>
 
   <!-- </div> -->

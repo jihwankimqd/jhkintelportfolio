@@ -40,19 +40,7 @@
         </div>         
       </section>
 
-      <section id="contact">
-          <!-- <p>contact</p> -->
-        <div class="svg-wrapper">
-
-          <svg height="40" width="150">
-            <rect id="shape" height="40" width="150" />
-          </svg>
-
-            <div id="text">
-              <a href="contact.html">contact</a>
-            </div> 
-        </div>
-      </section>
+      
 
     <!-- </div> -->
 
