@@ -42,6 +42,8 @@ collection_line= db['line']
 @app.route("/scatter", methods=['POST'])
 def insert_document_scatter():
     req_data = request.get_json()
+    # Check if the data from the website already exists in the database. If so,
+    # delete it, if not, add it.
     if collection_scatter.count_documents(req_data, limit = 1):
         collection_scatter.delete_one(req_data)
     else:
