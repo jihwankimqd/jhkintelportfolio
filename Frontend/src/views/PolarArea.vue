@@ -1,6 +1,8 @@
 <template>
   <div class="small">
-    <polar-area-chart :chart-data="datacollection"></polar-area-chart>
+    <polar-area-chart :chart-data="datacollection" class='chart'></polar-area-chart>
+
+      <div class="dataform">
 
         <h4> Add Data</h4>
         <p> Removes Duplicates</p>
@@ -17,7 +19,7 @@
       <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Submit</button>
 
       <!-- <button class="btn btn-large btn-block btn-primary full-width" @click="RemoveFromAPI">Remove</button> -->
-
+    </div>
 
   </div>
 </template>
@@ -144,5 +146,13 @@
   .small {
     max-width: 600px;
     margin:  150px auto;
+  }
+
+  .chart{
+    margin-top:-100px;
+  }
+
+    .dataform {
+    margin: 20px;
   }
 </style>

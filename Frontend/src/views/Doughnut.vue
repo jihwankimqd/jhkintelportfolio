@@ -1,6 +1,8 @@
 <template>
   <div class="small">
-    <doughnut-chart :chart-data="datacollection"></doughnut-chart>
+    <doughnut-chart :chart-data="datacollection" class='chart'></doughnut-chart>
+
+      <div class="dataform">
 
         <h4> Add Data</h4>
         <p> Removes Duplicates</p>
@@ -16,6 +18,7 @@
 
       <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Submit</button>
 
+      </div>
   </div>
 </template>
 
@@ -125,5 +128,12 @@
   .small {
     max-width: 600px;
     margin:  150px auto;
+  }
+  .chart{
+    margin-top:-100px;
+  }
+
+  .dataform {
+    margin: 20px;
   }
 </style>

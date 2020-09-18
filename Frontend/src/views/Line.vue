@@ -1,7 +1,9 @@
 <template>
   <div class="small">
   <!-- <div class="chart"> -->
-    <line-chart :chart-data="datacollection"></line-chart>
+    <line-chart :chart-data="datacollection" class = "chart"></line-chart>
+
+      <div class="dataform">
 
         <h4> Add Data</h4>
         <p> Removes Duplicates</p>
@@ -16,7 +18,7 @@
         </ul>
 
       <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Submit</button>
-
+      </div>
   </div>
 </template>
 
@@ -111,5 +113,12 @@
   .small {
     max-width: 600px;
     margin:  150px auto;
+  }
+  .chart{
+    margin-top:-100px;
+  }
+
+    .dataform {
+    margin: 20px;
   }
 </style>

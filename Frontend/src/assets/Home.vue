@@ -35,7 +35,7 @@
           </svg>
 
             <div id="text">
-              <a href="projects.html">projects</a>
+              <a href="portfolio.html">portfolio</a>
             </div> 
         </div>         
       </section>

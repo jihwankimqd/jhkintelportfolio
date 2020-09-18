@@ -1,7 +1,8 @@
 <template>
   <div class="small">
-    <bubble-chart :chart-data="datacollection"></bubble-chart>
+    <bubble-chart :chart-data="datacollection" class='chart'></bubble-chart>
 
+      <div class="dataform">
         <h4> Add Data</h4>
         <p> Removes Duplicates</p>
 
@@ -20,7 +21,7 @@
         </ul>
 
       <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Submit</button>
-
+      </div>
   </div>
 </template>
 
@@ -141,4 +142,11 @@
     max-width: 600px;
     margin:  150px auto;
   }
+
+  .chart{
+    margin-top:-100px;
+  }
+    .dataform {
+      margin: 20px;
+    }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     
-    <div id="nav">
+    <div id="chartnav">
       <router-link to="/line">Line</router-link> |
       <router-link to="/bar">Bar</router-link> |
       <router-link to="/doughnut">Doughnut</router-link> |
@@ -37,5 +37,10 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    overflow: hidden;
+  }
+
+  #chartnav{
+    margin-top:35px;
   }
 </style>
