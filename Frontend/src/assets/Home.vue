@@ -101,6 +101,7 @@ export default {
       font-weight: bolder;
       position: relative;
       /* margin-top: -20%; */
+      
     }
     
     .brand_page {

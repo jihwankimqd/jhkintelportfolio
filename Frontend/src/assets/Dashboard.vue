@@ -1,6 +1,15 @@
 <template>
   <div>
   <!-- <div class="small"> -->
+    <div v-if="loading">
+          <div class="brand_landing">
+            <div id="landing">
+              <p>loading...</p>
+            </div>
+          </div>
+          <div class="bg"></div> 
+    </div>
+    <div v-else>
     <div class="row">
 
         <div class="col-md-4">
@@ -20,13 +29,13 @@
             </div>
         </div> 
         
-        <div class="col-md-4">
-            <div class = 'medium'>
+        <!-- <div class="col-md-4"> -->
+
+        <!-- </div>         -->
+    </div>
+            <div class = 'mlchart'>
                 <line-chart :chart-data="datacollection3" class="chart"></line-chart>
             </div>
-        </div>        
-    </div>
-
         <div class="dataform">
 
             <h4> Enter Stock Symbol</h4>
@@ -38,10 +47,10 @@
 
             <button class="btn btn-block btn-primary" @click="addToAPI">Process Data</button>
             <button class="btn btn-block btn-primary" @click="fillData">Update Chart</button>
-            <button class="btn btn-block btn-primary" @click="addToAPIML">Process Data ML</button>
-            <button class="btn btn-block btn-primary" @click="fillDataML">Update Chart ML</button>
+            <button class="btn btn-block btn-primary" @click="addToAPIML">Process Data Machine Learning</button>
+            <button class="btn btn-block btn-primary" @click="fillDataML">Update Chart Machine Learning</button>
         </div>
-
+        </div>
   </div>
 </template>
 
@@ -66,10 +75,9 @@
         datacollection1: null,
         datacollection2: null,
         datacollection3: null,
-
+        loading: false,
 
         new_data: { x_value: '096770'},
-
       }
     },
     mounted () {
@@ -212,27 +220,12 @@
 					});
       },
     addToAPI() {
-    //   let newData = {
-    //     stock_id: this.new_data.x_value,
-    //   }
-    //   console.log(newData);
-      axios.post('http://localhost:5000/processed_data')
-        .then((response) => {
-          alert("Complete! Now Update Chart")
-          this.response = response.data;
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-
-    addToAPIML() {
       let newData = {
         stock_id: this.new_data.x_value,
       }
       console.log(newData);
-      axios.post('http://localhost:5000/model_fitting', newData)
+      this.loading = true
+      axios.post('http://localhost:5000/processed_data', newData)
         .then((response) => {
           alert("Complete! Now Update Chart")
           this.response = response.data;
@@ -240,7 +233,27 @@
         })
         .catch((error) => {
           console.log(error);
-        });
+        }).finally(() => (this.loading = false))
+        ;
+    },
+
+    addToAPIML() {
+    //   let newData = {
+    //     stock_id: this.new_data.x_value,
+    //   }
+    //   console.log(newData);
+      this.loading = true
+      axios.post('http://localhost:5000/model_fitting')
+        .then((response) => {
+          alert("Complete! Now Update Chart")
+          this.response = response.data;
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => (this.loading = false))
+        ;
     },
     // combinedfill(){
     //     this.fillData;
@@ -260,6 +273,27 @@
     .dataform {
       margin-top: 120px;
       text-align:center;
+    }
+
+
+
+   .brand_landing {
+
+
+      font-size:30px;
+      font-weight: bolder;
+      position: relative;
+      /* margin-top: -20%; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      height: 100vh;
+
+      /* Scroll Snap */
+      scroll-snap-align: center;
     }
 
 </style>
