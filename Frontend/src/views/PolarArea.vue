@@ -1,11 +1,13 @@
 <template>
-  <div class="small">
+  <!-- <div class="small"> -->
+    <div class="size">
     <polar-area-chart :chart-data="datacollection" class='chart'></polar-area-chart>
 
       <div class="dataform">
+          <h4> Add/Remove Data</h4>
 
-        <h4> Add Data</h4>
-        <p> Removes Duplicates</p>
+        <!-- <h4> Add Data</h4> -->
+        <!-- <p> Removes Duplicates</p> -->
 
         <ul>
           <label class="pull-left"> x value </label>
@@ -16,7 +18,7 @@
           <input type="text" class="form-control" placeholder="Value" v-model="new_data.y_value">
         </ul>
 
-      <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Submit</button>
+      <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Update</button>
 
       <!-- <button class="btn btn-large btn-block btn-primary full-width" @click="RemoveFromAPI">Remove</button> -->
     </div>
@@ -143,6 +145,12 @@
 </script>
 
 <style>
+  .size{
+    max-width: 500px;
+    margin:  150px auto;
+
+  }
+
   .small {
     max-width: 600px;
     margin:  150px auto;

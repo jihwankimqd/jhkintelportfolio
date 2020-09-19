@@ -6,40 +6,29 @@
       <section id="home">
           <div class="brand_landing">
             <div id="landing">
-              <p>JHK</p>
+              <p>Chartjs</p>
             </div>
           </div>
           <div class="bg"></div> 
       </section>
 
-      <section id="about">
-        <div class="svg-wrapper">
+      <section id="">
+        <div class="chartjs">
 
-          <svg height="40" width="150">
-            <rect id="shape" height="40" width="150" />
-          </svg>
-
-            <div id="text">
-              <a href="about.html">about</a>
-            </div> 
+            <div id="chartnav">
+            <router-link to="/line">Line</router-link> |
+            <router-link to="/bar">Bar</router-link> |
+            <router-link to="/doughnut">Doughnut</router-link> |
+            <router-link to="/pie">Pie</router-link> |
+            <router-link to="/radar">Radar</router-link> |
+            <router-link to="/polararea">Polar Area</router-link> |
+            <router-link to="/bubble">Bubble</router-link> |
+            <router-link to="/scatter">Scatter</router-link>
+            </div>
+            <router-view />
         </div>
           
       </section>
-
-      <section id="projects">
-          <!-- <p>projects</p> -->
-        <div class="svg-wrapper">
-
-          <svg height="40" width="150">
-            <rect id="shape" height="40" width="150" />
-          </svg>
-
-            <div id="text">
-              <a href="portfolio.html">chartjs</a>
-            </div> 
-        </div>         
-      </section>
-
       
 
     <!-- </div> -->
@@ -88,13 +77,7 @@ export default {
       position: relative;
       /* margin-top: -20%; */
     }
-    
-    .brand_page {
-      
-      font-size:20px;
-      font-weight: bolder;
-      position: relative;
-    }
+
 
     .bg {
       position: absolute;
@@ -121,10 +104,6 @@ export default {
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FB7BA2', endColorstr='#90D5EC',GradientType=1 );
     }
 
-    .container {
-
-    }
-
     .lead {
       font-size: 1.5rem;
     }
@@ -147,15 +126,6 @@ export default {
       margin-top: -20%;
     }
 
-    #projects p{
-      margin-top: -20%;
-    }
-
-    #contact p{
-      margin-top: -20%;
-    }
-
-
   .svg-wrapper {
     margin-top: -45px;
     /* position: relative; */
@@ -167,6 +137,10 @@ export default {
     margin-left: 5px;
     margin-right: 5px;
   }
+
+    .chartjs{
+        margin-top: 95px;
+    }
 
   #shape {
     

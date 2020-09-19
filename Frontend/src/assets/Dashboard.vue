@@ -6,41 +6,11 @@
       <section id="home">
           <div class="brand_landing">
             <div id="landing">
-              <p>JHK</p>
+              <p>dashboard</p>
             </div>
           </div>
           <div class="bg"></div> 
       </section>
-
-      <section id="about">
-        <div class="svg-wrapper">
-
-          <svg height="40" width="150">
-            <rect id="shape" height="40" width="150" />
-          </svg>
-
-            <div id="text">
-              <a href="about.html">about</a>
-            </div> 
-        </div>
-          
-      </section>
-
-      <section id="projects">
-          <!-- <p>projects</p> -->
-        <div class="svg-wrapper">
-
-          <svg height="40" width="150">
-            <rect id="shape" height="40" width="150" />
-          </svg>
-
-            <div id="text">
-              <a href="portfolio.html">chartjs</a>
-            </div> 
-        </div>         
-      </section>
-
-      
 
     <!-- </div> -->
 
@@ -143,17 +113,6 @@ export default {
     }
 
 
-    #about p{
-      margin-top: -20%;
-    }
-
-    #projects p{
-      margin-top: -20%;
-    }
-
-    #contact p{
-      margin-top: -20%;
-    }
 
 
   .svg-wrapper {

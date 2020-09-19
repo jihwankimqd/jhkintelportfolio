@@ -9,21 +9,25 @@
       <router-link to="/radar">Radar</router-link> |
       <router-link to="/polararea">Polar Area</router-link> |
       <router-link to="/bubble">Bubble</router-link> |
-      <router-link to="/scatter">Scatter</router-link> |
+      <router-link to="/scatter">Scatter</router-link>
     </div>
     <router-view />
+    <!-- <Portfolio/>, -->
     <Navbar/>
 
   </div>
 </template>
 
 <script>
+
 import Navbar from '../../assets/Navbar.vue'
+// import Portfolio from '../../assets/Portfolio.vue'
+
 
 export default {
   name: 'App',
   components: {
-
+    // Portfolio,
     Navbar
 
   }
@@ -37,7 +41,7 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
   #chartnav{

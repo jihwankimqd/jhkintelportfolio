@@ -1,12 +1,13 @@
 <template>
-  <div class="small">
+  <div class = 'medium'>
   <!-- <div class="chart"> -->
     <line-chart :chart-data="datacollection" class = "chart"></line-chart>
 
       <div class="dataform">
+          <h4> Add/Remove Data</h4>
 
-        <h4> Add Data</h4>
-        <p> Removes Duplicates</p>
+        <!-- <h4> Add Data</h4> -->
+        <!-- <p> Removes Duplicates</p> -->
 
         <ul>
           <label class="pull-left"> x value </label>
@@ -17,7 +18,7 @@
           <input type="text" class="form-control" placeholder="Close" v-model="new_data.y_value">
         </ul>
 
-      <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Submit</button>
+      <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Update</button>
       </div>
   </div>
 </template>
@@ -64,9 +65,10 @@
 										label: "Line Chart",
 										fill: false,
                     data: dataClose,
-                    backgroundColor: '#2554FF',
-                    borderColor: '#2554FF',
-                    pointBorderColor: '#2554FF',
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',   
+                    borderColor: 'rgba(153, 102, 255, 0.2)',   
+                    pointBorderColor:'rgba(153, 102, 255, 0.2)',         
+
                     pointRadius: 1,
 
 									}
@@ -110,8 +112,8 @@
 </script>
 
 <style>
-  .small {
-    max-width: 600px;
+  .medium {
+    max-width: 1200px;
     margin:  150px auto;
   }
   .chart{

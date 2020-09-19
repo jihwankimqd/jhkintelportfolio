@@ -1,10 +1,11 @@
 <template>
-  <div class="small">
+  <div class ="medium">
+  <!-- <div class="small"> -->
     <bar-chart :chart-data="datacollection" class="chart"></bar-chart>
         <div class="dataform">
 
-          <h4> Add Data</h4>
-          <p> Removes Duplicates</p>
+          <h4> Add/Remove Data</h4>
+          <!-- <p> Removes Duplicates</p> -->
             <ul>
               <label class="pull-left"> x value </label>
               <input type="text" class="form-control" placeholder="Date" v-model="new_data.x_value">
@@ -13,7 +14,7 @@
               <label class="pull-left"> y value </label>
               <input type="text" class="form-control" placeholder="Close" v-model="new_data.y_value">
             </ul>
-        <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Submit</button>
+        <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Update</button>
         </div>
 
   </div>

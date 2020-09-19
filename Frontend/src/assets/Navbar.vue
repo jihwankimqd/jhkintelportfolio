@@ -9,12 +9,14 @@
       <a id="about" href="about.html">
         <span>ABOUT</span>
       </a>    
-      
+
       <a id="portfolio" href="portfolio.html">
-        <span>PORTFOLIO</span>
+        <span>CHARTJS</span>
       </a>
 
-
+      <a id="dashboard" href="dashboard.html">
+        <span>DASHBOARD</span>
+      </a>
 
       <!-- <a id="projects" href="projects.html">
         <span>PROJECTS</span>
