@@ -22,10 +22,15 @@ cluster = MongoClient('mongodb+srv://jihwan:1234@intelportfolio.kqupw.gcp.mongod
 db = cluster['test']
 
 ## BACKEND and ML
+collection_preprocessed_data = db['preprocessed_data']
 
-# DJI
-# from DJI import get_DJI
-# get_DJI()
+from datapreprocessing import preprocessdata
+stock_input = '096770'
+preprocessdata(stock_input)
+data = pd.read_csv('processed_data.csv')
+data_json = json.loads(data.to_json(orient='records'))
+collection_preprocessed_data.remove()
+collection_preprocessed_data.insert(data_json)
 
 
 ## FRONTEND and CHARTJS
