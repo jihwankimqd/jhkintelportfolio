@@ -21,9 +21,27 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 cluster = MongoClient('mongodb+srv://jihwan:1234@intelportfolio.kqupw.gcp.mongodb.net/test?retryWrites=true&w=majority')
 db = cluster['test']
 
-# Scatter
+## BACKEND and ML
+
+# DJI
+collection_DJI = db['DJI'].find({})
+
+# @app.route('/DJI', methods=['GET'])
+# def get_data_DJI():
+#     documents = collection_DJI.find()
+#     response = []
+#     for document in documents:
+#         document['_id'] = str(document['_id'])
+#         response.append(document)
+#     return json.dumps(response)
+
+
+
+## FRONTEND and CHARTJS
+
+# Bubble
 collection_bubble = db['bubble']
-# Bubble 
+# Scatter
 collection_scatter = db['scatter']
 # PolarArea
 collection_polararea = db['polararea']
