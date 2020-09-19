@@ -35,6 +35,10 @@ def get_data_processed():
         response.append(document)
     return json.dumps(response)
 
+
+# Take a long time (~2minutes) to process the data. Therefore, it takes time
+# before the "Update Chart" button has any effect. Check the console log to know
+# when the data processing part is finished.
 @app.route("/processed_data", methods=['POST'])
 def insert_document_data_processed():
     req_data = request.get_json()

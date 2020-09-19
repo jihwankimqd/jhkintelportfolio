@@ -1,7 +1,26 @@
 <template>
-  <div class ="medium">
+  <div>
   <!-- <div class="small"> -->
-    <bar-chart :chart-data="datacollection" class="chart"></bar-chart>
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="medium">
+                <line-chart :chart-data="datacollection" class="chart"></line-chart>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="medium">
+                <bar-chart :chart-data="datacollection1" class="chart"></bar-chart>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="medium">
+                <doughnut-chart :chart-data="datacollection1" class="chart"></doughnut-chart>
+            </div>
+        </div>       
+    </div>
+
         <div class="dataform">
 
           <h4> Enter Stock Symbol</h4>
@@ -20,17 +39,27 @@
 </template>
 
 <script>
+  import LineChart from '@/components/LineChart.vue'
   import BarChart from '@/components/BarChart.vue'
-    import axios from 'axios'
+  import DoughnutChart from '@/components/DoughnutChart.vue'
+
+  import axios from 'axios'
+  import 'bootstrap/dist/css/bootstrap.min.css'
+  import 'bootstrap-vue/dist/bootstrap-vue.css'
 
   export default {
     components: {
-      BarChart
+      LineChart,
+      BarChart,
+      DoughnutChart
     },
     data () {
       return {
         datacollection: null,
-        new_data: { x_value: '005930'},
+        datacollection1: null,
+        datacollection2: null,
+
+        new_data: { x_value: '051910'},
 
       }
     },
@@ -46,28 +75,56 @@
 						function (response) {
                             let label = [];
                             let dataClose = [];
-
+                            
+                            let label1 = [];
+                            let dataClose1 = [];
 							for(let i=0;i<response.data.length;i++)
 							{
 								let result = response.data[i];
 
                                 label.push(result['Date']);
                                 dataClose.push(parseInt(result['Close']));
-								
+
+                                label1.push(result['Date']);
+                                dataClose1.push(parseInt(result['Foreign_Volume']));								
 							}
 							let datacollection = {
 								labels: label,
 								datasets: [{
-										label: "Bar Chart",
+										label: "Close vs. Date",
 										fill: false,
                                         data: dataClose,
-                                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                                        borderColor: 'rgba(255,99,132,1)',
-                                        pointBorderColor: '#2554FF',
+                                        // backgroundColor: 'rgba(153, 102, 255, 0.2)',   
+                                        // borderColor: 'rgba(153, 102, 255, 0.2)',   
+                                        // pointBorderColor:'rgba(153, 102, 255, 0.2)',   
+                                        borderColor: '#ffb6c1',
+                                        backgroundColor: '#ffb6c1',
+                                        borderWidth: 1,
+                                        pointRadius: 1
+
 									}
 								]
-							}
-							this.datacollection = datacollection;
+                            }
+							let datacollection1 = {
+								labels: label1,
+								datasets: [{
+										label: "Foreign Volume vs Date",
+										fill: false,
+                                        data: dataClose1,
+                                        // backgroundColor: 'rgba(153, 102, 255, 0.2)',   
+                                        // borderColor: 'rgba(153, 102, 255, 0.2)',   
+                                        // pointBorderColor:'rgba(153, 102, 255, 0.2)',   
+                                        borderColor: '#2554FF',
+                                        backgroundColor: '#2554FF',
+                                        borderWidth: 1,
+                                        pointRadius: 1
+
+									}
+								]
+                            }                            
+                            this.datacollection = datacollection;
+							this.datacollection1 = datacollection1;
+                            
 							console.log(this.datacollection);
 						}.bind(this)
 					)
@@ -104,6 +161,11 @@
 </script>
 
 <style>
+  /* .chart-box{
+    margin-top: 150px;
+    max-width: 900px;
+  } */
+
   .chart{
     margin-top:-100px;
   }

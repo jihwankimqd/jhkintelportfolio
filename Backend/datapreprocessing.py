@@ -191,4 +191,5 @@ def preprocessdata(stock_input):
     # df.tail()
 
     df.to_csv('processed_data.csv')
+    df.sort_values(by='Date')
     return
