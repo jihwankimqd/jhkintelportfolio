@@ -3,6 +3,8 @@ import pymongo
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
+import pandas as pd
+from datapreprocessing import preprocessdata
 
 # configuration
 DEBUG = True
@@ -24,14 +26,25 @@ db = cluster['test']
 ## BACKEND and ML
 collection_preprocessed_data = db['preprocessed_data']
 
-from datapreprocessing import preprocessdata
-stock_input = '096770'
-preprocessdata(stock_input)
-data = pd.read_csv('processed_data.csv')
-data_json = json.loads(data.to_json(orient='records'))
-collection_preprocessed_data.remove()
-collection_preprocessed_data.insert(data_json)
+@app.route('/processed_data', methods=['GET'])
+def get_data_processed():
+    documents = collection_preprocessed_data.find()
+    response = []
+    for document in documents:
+        document['_id'] = str(document['_id'])
+        response.append(document)
+    return json.dumps(response)
 
+@app.route("/processed_data", methods=['POST'])
+def insert_document_data_processed():
+    req_data = request.get_json()
+    # stock_input = (req_data)
+    preprocessdata(req_data)
+    data = pd.read_csv('processed_data.csv')
+    data_json = json.loads(data.to_json(orient='records'))
+    collection_preprocessed_data.remove()
+    collection_preprocessed_data.insert(data_json)
+    return ('', 204)
 
 ## FRONTEND and CHARTJS
 

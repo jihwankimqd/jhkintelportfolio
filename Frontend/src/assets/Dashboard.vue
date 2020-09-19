@@ -1,165 +1,119 @@
 <template>
-  <div id="app">
+  <div class ="medium">
+  <!-- <div class="small"> -->
+    <bar-chart :chart-data="datacollection" class="chart"></bar-chart>
+        <div class="dataform">
 
-    <!-- <div class="container"> -->
+          <h4> Add/Remove Data</h4>
+          <!-- <p> Removes Duplicates</p> -->
+            <ul>
+              <label class="pull-left"> Stock ID </label>
+              <input type="text" class="form-control" placeholder="Date" v-model="new_data.x_value">
+            </ul>
 
-      <section id="home">
-          <div class="brand_landing">
-            <div id="landing">
-              <p>dashboard</p>
-            </div>
-          </div>
-          <div class="bg"></div> 
-      </section>
-
-    <!-- </div> -->
+        <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Update</button>
+        </div>
 
   </div>
 </template>
 
 <script>
+  import BarChart from '@/components/BarChart.vue'
+    import axios from 'axios'
 
-export default {
-  name: 'App',
-  components: {
-    
+  export default {
+    components: {
+      BarChart
+    },
+    data () {
+      return {
+        datacollection: null,
+        new_data: { x_value: '005930'},
+
+      }
+    },
+    mounted () {
+      this.fillData()
+    },
+    methods: {
+      fillData () {
+				let url = "http://localhost:5000/" + 'processed_data';
+				axios
+					.get(url)
+					.then(
+						function (response) {
+                            let label = [];
+                            let dataClose = [];
+
+							for(let i=0;i<response.data.length;i++)
+							{
+								let result = response.data[i];
+
+                                label.push(result['Date']);
+                                dataClose.push(parseInt(result['Close']));
+								
+							}
+							let datacollection = {
+								labels: label,
+								datasets: [{
+										label: "Bar Chart",
+										fill: false,
+                                        data: dataClose,
+                                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                        borderColor: 'rgba(255,99,132,1)',
+                                        pointBorderColor: '#2554FF',
+									}
+								]
+							}
+							this.datacollection = datacollection;
+							console.log(this.datacollection);
+						}.bind(this)
+					)
+					.catch(function (error) {
+                        console.log(error)
+
+                    
+					});
+      },
+    addToAPI() {
+
+      let newData = {
+        Date: this.new_data.x_value,
+        Close: this.new_data.y_value,
+      }
+      console.log(newData);
+      axios.post('http://localhost:5000/processed_data', newData)
+        .then((response) => {
+          this.response = response.data;
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
+    combined(){
+        // this.fillData()
+        this.addToAPI()
+        this.fillData()
+    }
+      
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
-  line-height: 1.6;
-  overflow: hidden;
-      /* width: 100%;
-      height: 100%; */
-
-      /* CSS Smooth Scroll */
-      overflow-y: scroll; 
-      scroll-behavior: smooth;
-      scroll-snap-type: y mandatory;
-
-      /* overflow: hidden; */  
-}
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-   .brand_landing {
-
-
-      font-size:30px;
-      font-weight: bolder;
-      position: relative;
-      /* margin-top: -20%; */
-    }
-    
-    .brand_page {
-      
-      font-size:20px;
-      font-weight: bolder;
-      position: relative;
-    }
-
-    .bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      opacity: 0;
-      transition: 1s;
-      pointer-events: none;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      color: black;
-      background: black;
-      padding-bottom:5%;
-    }
-
-    .brand_landing:hover~.bg {
-      opacity: 1;
-      background: #e2a9e5;
-      background: -moz-linear-gradient(-45deg, #FB7BA2 5%, #90D5EC 100%);
-      background: -webkit-linear-gradient(-45deg,  #FB7BA2 5%, #90D5EC 100%);
-      background: linear-gradient(135deg,  #FB7BA2 5%, #90D5EC 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FB7BA2', endColorstr='#90D5EC',GradientType=1 );
-    }
-
-    .container {
-
-    }
-
-    .lead {
-      font-size: 1.5rem;
-    }
-
-    section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      width: 100%;
-      height: 100vh;
-
-      /* Scroll Snap */
-      scroll-snap-align: center;
-    }
-
-
-
-
-  .svg-wrapper {
-    margin-top: -45px;
-    /* position: relative; */
-    width: 150px;
-    /*make sure to use same height/width as in the html*/
-    height: 40px;
-    display: inline-block;
-    border-radius: 3px;
-    margin-left: 5px;
-    margin-right: 5px;
+  .chart{
+    margin-top:-100px;
   }
 
-  #shape {
-    
-    stroke-width: 6px;
-    fill: transparent;
-    /* opacity: 0; */
-    stroke-dasharray: 85 400;
-    stroke-dashoffset: -220;
-    transition: 1s all ease;
-  }
+  /* .small {
+    max-width: 600px;
+    margin:  150px auto;
+  } */
 
-  #landing{
-    /* background-color: green; */
-
-    /* margin-top: 200px; */
-  }
-
-  #text {
-    margin-top: -42px;
-  }
-
-  #text a {
-    color: black;
-    text-decoration: none;
-    font-weight: 100;
-    font-size: 1.1em;
-  }
-
-  .svg-wrapper:hover #shape {
-    stroke-dasharray: 50 0;
-    stroke-width: 3px;
-    stroke-dashoffset: 0;
-    stroke: black;
-  }
-
+    .dataform {
+      margin: 20px;
+    }
 
 </style>
