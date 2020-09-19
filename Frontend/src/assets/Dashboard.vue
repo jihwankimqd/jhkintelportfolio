@@ -182,7 +182,7 @@
 								let result = response.data[i];
 
                                 label3.push(result['Date']);
-                                dataClose3.push(parseInt(result['Close']));
+                                dataClose3.push(parseInt(result['Pred_Close']));
 							
                             }
                             let datacollection3 = {
@@ -212,11 +212,11 @@
 					});
       },
     addToAPI() {
-      let newData = {
-        stock_id: this.new_data.x_value,
-      }
-      console.log(newData);
-      axios.post('http://localhost:5000/processed_data', newData)
+    //   let newData = {
+    //     stock_id: this.new_data.x_value,
+    //   }
+    //   console.log(newData);
+      axios.post('http://localhost:5000/processed_data')
         .then((response) => {
           alert("Complete! Now Update Chart")
           this.response = response.data;
