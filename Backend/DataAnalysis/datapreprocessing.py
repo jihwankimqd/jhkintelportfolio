@@ -122,8 +122,7 @@ df = df.replace('\%','', regex=True)
 df.set_index(df['Date'], inplace= True)
 df.drop('Date',axis=1,inplace=True)
 
-df.head()
-
+# df.head()
 
 # Fill missing values such as weekends/holidays
 df = df.resample('D').asfreq()
@@ -131,126 +130,37 @@ df.sort_values(by=['Date'],ascending=False,inplace=True)
 df.fillna(method='ffill',inplace=True)
 
 
-stock_file = 'stock_'+ str(stock_id) +'.csv'
-df.to_csv(str(stock_file))
+# stock_file = 'stock_'+ str(stock_id) +'.csv'
+# df.to_csv(str(stock_file))
 
 
 ## Tweak the KR_IR file
-
-
-# Data from df_IR = pd.read_csv('./data/KR_IR.csv'). Code below to fill in missing dates, and forward fill missing values of IR to those missing dates, producing a complete dataframe of IR.
-
-dates = pd.Index([pd.Timestamp('2015-03-12'), 
-                  pd.Timestamp('2015-06-11'), 
-                  pd.Timestamp('2016-06-09'), 
-                  pd.Timestamp('2017-11-30'), 
-                  pd.Timestamp('2018-11-30'), 
-                  pd.Timestamp('2019-07-18'), 
-                  pd.Timestamp('2019-10-16'), 
-                  pd.Timestamp('2020-03-17'), 
-                  pd.Timestamp('2020-05-28'), 
-                  pd.Timestamp('2020-08-19')])
-df_IR = pd.DataFrame([1.75,1.50,1.25,1.50,1.75,1.50,1.25,0.75,0.50,0.50], dates)
-df_IR = df_IR.asfreq('D')
-df_IR.fillna(method='ffill',inplace=True)
-df_IR.reset_index(inplace=True)
-df_IR.columns = ['Date','IR']
-df_IR['Date'] = pd.to_datetime(df_IR['Date'])
-df_IR.sort_values(by=['Date'],ascending=False,inplace=True)
-df_IR.set_index(['Date'],inplace=True)
-
-
-df_IR.head()
-
+from KR_IR import get_IR
+df_IR = get_IR()
 
 ## Clean DJI.csv
-
-
-df_DJI = pd.read_csv('./data/DJI.csv')
-
-df_DJI.info()
-df_DJI.set_index(['Date'],inplace=True)
-df_DJI.sort_values(by=['Date'],ascending=False,inplace=True)
-drop_cols = ['Open', 'High','Low', 'Adj Close', 'Volume']
-
-# Remove columns without relative significance.
-df_DJI = df_DJI.drop(drop_cols,axis=1)
-df_DJI.head()
-
-
-df_DJI.index = pd.to_datetime(df_DJI.index)
-
-df_DJI = df_DJI.resample('D').asfreq()
-df_DJI.sort_values(by=['Date'],ascending=False,inplace=True)
-df_DJI.fillna(method='ffill',inplace=True)
-
-df_DJI.head()
+from DJI import get_DJI
+df_DJI = get_DJI()
 
 
 ## Clean OIL_WTI.csv
-
-
-df_WTI = pd.read_csv('./data/OIL_WTI.csv')
-
-df_WTI.info()
-df_WTI.set_index(['Date'],inplace=True)
-
-df_WTI.index = pd.to_datetime(df_WTI.index)
-df_WTI = df_WTI.resample('D').asfreq()
-
-df_WTI.fillna(method='ffill',inplace=True)
-
-df_WTI.sort_values(by=['Date'],ascending=False,inplace=True)
-
-df_WTI.head()
+from WTI import get_WTI
+df_WTI = get_WTI()
 
 
 ## Clean USD_KRW_XR.csv 
+from XR import get_XR
+df_XR = get_XR()
 
-
-df_XR = pd.read_csv('./data/USD_KRW_XR.csv')
-
-df_XR.info()
-df_XR.head()
-
-
-drop_cols = ['오픈','고가','저가']
-df_XR.drop(drop_cols,axis=1,inplace=True)
-
-col_rename = ['Date','XR','Pct_Change']
-df_XR.columns = col_rename
-
-
-df_XR = df_XR.replace('년','-', regex=True)
-df_XR = df_XR.replace('월','-', regex=True)
-df_XR = df_XR.replace('일','', regex=True)
-df_XR = df_XR.replace('\,','', regex=True)
-df_XR = df_XR.replace('\%','', regex=True)
-df_XR = df_XR.replace(' ','', regex=True)
-
-df_XR.head()
-
-
-df_XR['Date'] = pd.to_datetime(df_XR['Date'])
-df_XR = df_XR.set_index('Date')
-
-df_XR = df_XR.resample('D').asfreq()
-df_XR.fillna(method='ffill',inplace=True)
-
-df_XR.sort_values(by=['Date'],ascending=False,inplace=True)
-
-df_XR.head()
-
-
+# create clone of df
 df_STK = df
 
 # All cleaned dataframes. But all dataframes have different shapes. Therefore, must unite into a single dataframe and order it by date.
-df_DJI.shape
-df_IR.shape
-df_WTI.shape
-df_XR.shape
-df_STK.shape
-
+# df_DJI.shape
+# df_IR.shape
+# df_WTI.shape
+# df_XR.shape
+# df_STK.shape
 
 # df_STK.tail()
 start_date = '2015-08-10'
@@ -262,11 +172,11 @@ df_WTI = df_WTI[(df_WTI.index >= start_date) & (df_WTI.index <= end_date)]
 df_XR = df_XR[(df_XR.index >= start_date) & (df_XR.index <= end_date)]
 df_STK = df_STK[(df_STK.index >= start_date) & (df_STK.index <= end_date)]
 
-print('Shape of DJI: ', df_DJI.shape)
-print('Shape of IR: ', df_IR.shape)
-print('Shape of WTI: ', df_WTI.shape)
-print('Shape of XR: ', df_XR.shape)
-print('Shape of STK: ', df_STK.shape)
+# print('Shape of DJI: ', df_DJI.shape)
+# print('Shape of IR: ', df_IR.shape)
+# print('Shape of WTI: ', df_WTI.shape)
+# print('Shape of XR: ', df_XR.shape)
+# print('Shape of STK: ', df_STK.shape)
 
 
 # Concat all dataframes into one
@@ -275,11 +185,7 @@ df_DJI.columns = ['DJI_Close']
 df_XR.columns = ['XR','XR_Pct_Change']
 df = pd.concat([df_STK, df_DJI,df_IR,df_WTI,df_XR], axis=1)
 
-
-df.head()
-
-
-df.tail()
-
+# df.head()
+# df.tail()
 
 df.to_csv('processed_data.csv')

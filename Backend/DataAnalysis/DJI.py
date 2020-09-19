@@ -25,7 +25,7 @@ def get_DJI():
 
     # Remove columns without relative significance.
     df_DJI = df_DJI.drop(drop_cols,axis=1)
-    df_DJI.head()
+    # df_DJI.head()
 
 
     df_DJI.index = pd.to_datetime(df_DJI.index)

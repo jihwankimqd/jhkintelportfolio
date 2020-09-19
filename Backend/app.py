@@ -24,17 +24,8 @@ db = cluster['test']
 ## BACKEND and ML
 
 # DJI
-collection_DJI = db['DJI'].find({})
-
-# @app.route('/DJI', methods=['GET'])
-# def get_data_DJI():
-#     documents = collection_DJI.find()
-#     response = []
-#     for document in documents:
-#         document['_id'] = str(document['_id'])
-#         response.append(document)
-#     return json.dumps(response)
-
+# from DJI import get_DJI
+# get_DJI()
 
 
 ## FRONTEND and CHARTJS
