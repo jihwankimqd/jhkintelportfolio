@@ -18,9 +18,9 @@
         <span>DASHBOARD</span>
       </a>
 
-      <!-- <a id="projects" href="projects.html">
+      <a id="projects" href="projects.html">
         <span>PROJECTS</span>
-      </a>       -->
+      </a>      
       
 
     </Slide>

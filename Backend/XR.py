@@ -42,7 +42,7 @@ def get_XR():
     df_XR = df_XR.resample('D').asfreq()
     df_XR.fillna(method='ffill',inplace=True)
 
-    df_XR.sort_values(by=['Date'],ascending=False,inplace=True)
+    # df_XR.sort_values(by=['Date'],ascending=False,inplace=True)
 
     # df_XR.head()
     return df_XR

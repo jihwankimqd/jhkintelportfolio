@@ -35,7 +35,7 @@ def get_IR():
     df_IR.reset_index(inplace=True)
     df_IR.columns = ['Date','IR']
     df_IR['Date'] = pd.to_datetime(df_IR['Date'])
-    df_IR.sort_values(by=['Date'],ascending=False,inplace=True)
+    # df_IR.sort_values(by=['Date'],ascending=False,inplace=True)
     df_IR.set_index(['Date'],inplace=True)
     # df_IR.head()
     return df_IR

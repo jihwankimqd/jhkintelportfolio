@@ -17,11 +17,19 @@ export default {
               ticks: {
                 beginAtZero: true
               },
+              scaleLabel: {
+                display: true,
+                labelString: 'y-axis'
+              },
               gridLines: {
                 display: true
               }
             }],
             xAxes: [ {
+              scaleLabel: {
+                display: true,
+                labelString: 'x-axis'
+              },
               gridLines: {
                 display: false
               }

@@ -31,6 +31,6 @@ def get_DJI():
     df_DJI.index = pd.to_datetime(df_DJI.index)
 
     df_DJI = df_DJI.resample('D').asfreq()
-    df_DJI.sort_values(by=['Date'],ascending=False,inplace=True)
+    # df_DJI.sort_values(by=['Date'],ascending=False,inplace=True)
     df_DJI.fillna(method='ffill',inplace=True)
     return df_DJI

@@ -16,7 +16,7 @@
 
         <div class="col-md-4">
             <div class="medium">
-                <doughnut-chart :chart-data="datacollection1" class="chart"></doughnut-chart>
+                <line-chart :chart-data="datacollection2" class="chart"></line-chart>
             </div>
         </div>       
     </div>
@@ -41,7 +41,7 @@
 <script>
   import LineChart from '@/components/LineChart.vue'
   import BarChart from '@/components/BarChart.vue'
-  import DoughnutChart from '@/components/DoughnutChart.vue'
+//   import DoughnutChart from '@/components/DoughnutChart.vue'
 
   import axios from 'axios'
   import 'bootstrap/dist/css/bootstrap.min.css'
@@ -51,7 +51,7 @@
     components: {
       LineChart,
       BarChart,
-      DoughnutChart
+    //   DoughnutChart
     },
     data () {
       return {
@@ -78,7 +78,11 @@
                             
                             let label1 = [];
                             let dataClose1 = [];
-							for(let i=0;i<response.data.length;i++)
+
+                            let label2 = [];
+                            let dataClose2 = [];                
+
+                            for(let i=0;i<response.data.length;i++)
 							{
 								let result = response.data[i];
 
@@ -86,12 +90,16 @@
                                 dataClose.push(parseInt(result['Close']));
 
                                 label1.push(result['Date']);
-                                dataClose1.push(parseInt(result['Foreign_Volume']));								
-							}
+                                dataClose1.push(parseInt(result['Volume']));			
+                                
+                                label2.push(result['Date']);
+                                dataClose2.push(parseInt(result['DJI_Close']));								
+                            }
+                            
 							let datacollection = {
 								labels: label,
 								datasets: [{
-										label: "Close vs. Date",
+										label: "Closing Price by Date",
 										fill: false,
                                         data: dataClose,
                                         // backgroundColor: 'rgba(153, 102, 255, 0.2)',   
@@ -108,7 +116,7 @@
 							let datacollection1 = {
 								labels: label1,
 								datasets: [{
-										label: "Foreign Volume vs Date",
+										label: "Volume by Date",
 										fill: false,
                                         data: dataClose1,
                                         // backgroundColor: 'rgba(153, 102, 255, 0.2)',   
@@ -121,9 +129,25 @@
 
 									}
 								]
+                            }
+                            let datacollection2 = {
+								labels: label2,
+								datasets: [{
+										label: "Dow Jones Index Closing Price by Date",
+                                        fill: false,
+
+                                        data: dataClose2,
+                                        borderColor: '#90EE90',
+                                        backgroundColor:'#90EE90',
+                                        borderWidth: 1,
+                                        pointRadius: 1
+									}
+								]
                             }                            
                             this.datacollection = datacollection;
-							this.datacollection1 = datacollection1;
+                            this.datacollection1 = datacollection1;
+							this.datacollection2 = datacollection2;
+                            
                             
 							console.log(this.datacollection);
 						}.bind(this)

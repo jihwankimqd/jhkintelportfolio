@@ -26,7 +26,7 @@ def get_WTI():
 
     df_WTI.fillna(method='ffill',inplace=True)
 
-    df_WTI.sort_values(by=['Date'],ascending=False,inplace=True)
+    # df_WTI.sort_values(by=['Date'],ascending=False,inplace=True)
 
     # df_WTI.head()
 
