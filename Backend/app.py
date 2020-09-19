@@ -39,7 +39,7 @@ def get_data_processed():
 def insert_document_data_processed():
     req_data = request.get_json()
     # stock_input = (req_data)
-    preprocessdata(req_data)
+    preprocessdata(req_data['stock_id'])
     data = pd.read_csv('processed_data.csv')
     data_json = json.loads(data.to_json(orient='records'))
     collection_preprocessed_data.remove()

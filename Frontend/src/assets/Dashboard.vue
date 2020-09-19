@@ -4,14 +4,16 @@
     <bar-chart :chart-data="datacollection" class="chart"></bar-chart>
         <div class="dataform">
 
-          <h4> Add/Remove Data</h4>
+          <h4> Enter Stock Symbol</h4>
           <!-- <p> Removes Duplicates</p> -->
             <ul>
               <label class="pull-left"> Stock ID </label>
               <input type="text" class="form-control" placeholder="Date" v-model="new_data.x_value">
             </ul>
 
-        <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Update</button>
+        <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Process Data</button>
+        <button class="btn btn-large btn-block btn-primary full-width" @click="fillData">Update Chart</button>
+
         </div>
 
   </div>
@@ -78,8 +80,7 @@
     addToAPI() {
 
       let newData = {
-        Date: this.new_data.x_value,
-        Close: this.new_data.y_value,
+        stock_id: this.new_data.x_value,
       }
       console.log(newData);
       axios.post('http://localhost:5000/processed_data', newData)
@@ -95,7 +96,7 @@
     combined(){
         // this.fillData()
         this.addToAPI()
-        this.fillData()
+        // this.fillData()
     }
       
     }
