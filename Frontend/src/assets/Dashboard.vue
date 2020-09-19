@@ -36,9 +36,10 @@
                 <input type="text" class="form-control" placeholder="Date" v-model="new_data.x_value">
                 </ul>
 
-            <button class="btn btn-large btn-block btn-primary full-width" @click="combinedadd">Process Data</button>
-            <button class="btn btn-large btn-block btn-primary full-width" @click="combinedfill">Update Chart</button>
-
+            <button class="btn btn-block btn-primary" @click="addToAPI">Process Data</button>
+            <button class="btn btn-block btn-primary" @click="fillData">Update Chart</button>
+            <button class="btn btn-block btn-primary" @click="addToAPIML">Process Data ML</button>
+            <button class="btn btn-block btn-primary" @click="fillDataML">Update Chart ML</button>
         </div>
 
   </div>
@@ -180,14 +181,14 @@
 							{
 								let result = response.data[i];
 
-                                label3.push(result[0]['Date']);
-                                dataClose3.push(parseInt(result[0]['Close']));
+                                label3.push(result['Date']);
+                                dataClose3.push(parseInt(result['Close']));
 							
                             }
                             let datacollection3 = {
 								labels: label3,
 								datasets: [{
-										label: "Dow Jones Index Closing Price by Date",
+										label: "Predicted Price by Date",
                                         fill: false,
 
                                         data: dataClose3,
@@ -233,7 +234,7 @@
       console.log(newData);
       axios.post('http://localhost:5000/model_fitting', newData)
         .then((response) => {
-        //   alert("Complete! Now Update Chart")
+          alert("Complete! Now Update Chart")
           this.response = response.data;
           console.log(response);
         })
@@ -241,14 +242,14 @@
           console.log(error);
         });
     },
-    combinedfill(){
-        this.fillData;
-        this.fillDataML;
-    },
-    combinedadd(){
-        this.addToAPI;
-        this.addtoAPIML;
-    },     
+    // combinedfill(){
+    //     this.fillData;
+    //     this.fillDataML;
+    // },
+    // combinedadd(){
+    //     this.addToAPI;
+    //     this.addtoAPIML;
+    // },     
     }
   }
 </script>

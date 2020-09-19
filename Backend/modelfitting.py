@@ -8,7 +8,7 @@ def modelfitting():
     import pandas as pd
 
     df = pd.read_csv('processed_data.csv')
-    df.head()
+    # df.head()
 
 
     # corr_matrix = df.corr()
@@ -219,7 +219,11 @@ def modelfitting():
 
     # print("Final RMSE:",final_rmse)
 
-
+    df_pred = X_test
+    df_pred['Pred_Close'] = list(final_predictions)
+    df_pred.sort_values(by=['Date'],ascending=True,inplace=True)
     # After using the GridSearchCV to search for the best parameters and using those parameters, the final RMSE is the lowest amongst all methods tried.
-    return ([X_test,final_predictions])
+    # return ([X_test,final_predictions])
+    df_pred.to_csv('model_fitting.csv')
+    return 
 
