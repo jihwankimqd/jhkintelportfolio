@@ -5,6 +5,7 @@ from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 import pandas as pd
 from datapreprocessing import preprocessdata
+from modelfitting import modelfitting
 
 # configuration
 DEBUG = True
@@ -25,6 +26,9 @@ db = cluster['test']
 
 ## BACKEND and ML
 collection_preprocessed_data = db['preprocessed_data']
+collection_model_fitting = db['model_fitting']
+
+# Data Preparation
 
 @app.route('/processed_data', methods=['GET'])
 def get_data_processed():
@@ -34,7 +38,6 @@ def get_data_processed():
         document['_id'] = str(document['_id'])
         response.append(document)
     return json.dumps(response)
-
 
 # Take a long time (~2minutes) to process the data. Therefore, it takes time
 # before the "Update Chart" button has any effect. Check the console log to know
@@ -49,6 +52,38 @@ def insert_document_data_processed():
     collection_preprocessed_data.remove()
     collection_preprocessed_data.insert(data_json)
     return ('', 204)
+
+# Model Fitting 
+
+# @app.route('/model_fitting', methods=['GET'])
+# def get_data_model_fitting():
+#     documents = collection_model_fitting.find()
+#     response = []
+#     for document in documents:
+#         document['_id'] = str(document['_id'])
+#         response.append(document)
+#     return json.dumps(response)
+
+# @app.route("/modelfitting", methods=['POST'])
+# def insert_document_model_fitting():
+#     req_data = request.get_json()
+#     # stock_input = (req_data)
+#     # preprocessdata(req_data['stock_id'])
+#     # data = pd.read_csv('processed_data.csv')
+#     # data_json = json.loads(data.to_json(orient='records'))
+#     data = modelfitting()
+#     data_json = json.loads(data.to_json(orient='records'))
+#     # data[0] # X_test
+#     # data[1] # predict(X_test)
+#     collection_preprocessed_data.remove()
+#     collection_preprocessed_data.insert(data_json)
+#     return ('', 204)
+
+# output = modelfitting()
+# output[0] # X_test
+# output[1] # predict(X_test)
+
+
 
 ## FRONTEND and CHARTJS
 

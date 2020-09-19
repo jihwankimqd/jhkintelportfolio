@@ -18,7 +18,13 @@
             <div class = 'medium'>
                 <line-chart :chart-data="datacollection2" class="chart"></line-chart>
             </div>
-        </div>       
+        </div> 
+        
+        <div class="col-md-4">
+            <div class = 'medium'>
+                <line-chart :chart-data="datacollection3" class="chart"></line-chart>
+            </div>
+        </div>        
     </div>
 
         <div class="dataform">
@@ -30,8 +36,8 @@
                 <input type="text" class="form-control" placeholder="Date" v-model="new_data.x_value">
                 </ul>
 
-            <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Process Data</button>
-            <button class="btn btn-large btn-block btn-primary full-width" @click="fillData">Update Chart</button>
+            <button class="btn btn-large btn-block btn-primary full-width" @click="combinedadd">Process Data</button>
+            <button class="btn btn-large btn-block btn-primary full-width" @click="combinedfill">Update Chart</button>
 
         </div>
 
@@ -58,13 +64,16 @@
         datacollection: null,
         datacollection1: null,
         datacollection2: null,
+        datacollection3: null,
 
-        new_data: { x_value: '051910'},
+
+        new_data: { x_value: '096770'},
 
       }
     },
     mounted () {
       this.fillData()
+      this.fillDataML()
     },
     methods: {
       fillData () {
@@ -158,14 +167,57 @@
                     
 					});
       },
-    addToAPI() {
+    fillDataML () {
+				let url = "http://localhost:5000/" + 'model_fitting';
+				axios
+					.get(url)
+					.then(
+						function (response) {
+                            let label3 = [];
+                            let dataClose3 = [];           
 
+                            for(let i=0;i<response.data.length;i++)
+							{
+								let result = response.data[i];
+
+                                label3.push(result[0]['Date']);
+                                dataClose3.push(parseInt(result[0]['Close']));
+							
+                            }
+                            let datacollection3 = {
+								labels: label3,
+								datasets: [{
+										label: "Dow Jones Index Closing Price by Date",
+                                        fill: false,
+
+                                        data: dataClose3,
+                                        borderColor: '#90EE90',
+                                        backgroundColor:'#90EE90',
+                                        borderWidth: 1,
+                                        pointRadius: 1
+									}
+								]
+                            }                            
+                            this.datacollection3 = datacollection3;
+                            
+                            
+							console.log(this.datacollection);
+						}.bind(this)
+					)
+					.catch(function (error) {
+                        console.log(error)
+
+                    
+					});
+      },
+    addToAPI() {
       let newData = {
         stock_id: this.new_data.x_value,
       }
       console.log(newData);
       axios.post('http://localhost:5000/processed_data', newData)
         .then((response) => {
+          alert("Complete! Now Update Chart")
           this.response = response.data;
           console.log(response);
         })
@@ -174,12 +226,29 @@
         });
     },
 
-    combined(){
-        // this.fillData()
-        this.addToAPI()
-        // this.fillData()
-    }
-      
+    addToAPIML() {
+      let newData = {
+        stock_id: this.new_data.x_value,
+      }
+      console.log(newData);
+      axios.post('http://localhost:5000/model_fitting', newData)
+        .then((response) => {
+        //   alert("Complete! Now Update Chart")
+          this.response = response.data;
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    combinedfill(){
+        this.fillData;
+        this.fillDataML;
+    },
+    combinedadd(){
+        this.addToAPI;
+        this.addtoAPIML;
+    },     
     }
   }
 </script>
