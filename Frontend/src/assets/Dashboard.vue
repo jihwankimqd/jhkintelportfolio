@@ -4,18 +4,18 @@
     <div class="row">
 
         <div class="col-md-4">
-            <div class="medium">
+            <div class = 'medium'>
                 <line-chart :chart-data="datacollection" class="chart"></line-chart>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="medium">
+            <div class = 'medium'>
                 <bar-chart :chart-data="datacollection1" class="chart"></bar-chart>
             </div>
         </div>
 
         <div class="col-md-4">
-            <div class="medium">
+            <div class = 'medium'>
                 <line-chart :chart-data="datacollection2" class="chart"></line-chart>
             </div>
         </div>       
@@ -23,15 +23,15 @@
 
         <div class="dataform">
 
-          <h4> Enter Stock Symbol</h4>
-          <!-- <p> Removes Duplicates</p> -->
-            <ul>
-              <label class="pull-left"> Stock ID </label>
-              <input type="text" class="form-control" placeholder="Date" v-model="new_data.x_value">
-            </ul>
+            <h4> Enter Stock Symbol</h4>
+            <!-- <p> Removes Duplicates</p> -->
+                <ul>
+                <label class="pull-left"> Stock ID </label>
+                <input type="text" class="form-control" placeholder="Date" v-model="new_data.x_value">
+                </ul>
 
-        <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Process Data</button>
-        <button class="btn btn-large btn-block btn-primary full-width" @click="fillData">Update Chart</button>
+            <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Process Data</button>
+            <button class="btn btn-large btn-block btn-primary full-width" @click="fillData">Update Chart</button>
 
         </div>
 
@@ -185,22 +185,11 @@
 </script>
 
 <style>
-  /* .chart-box{
-    margin-top: 150px;
-    max-width: 900px;
-  } */
 
-  .chart{
-    margin-top:-100px;
-  }
-
-  /* .small {
-    max-width: 600px;
-    margin:  150px auto;
-  } */
 
     .dataform {
-      margin: 20px;
+      margin-top: 120px;
+      text-align:center;
     }
 
 </style>

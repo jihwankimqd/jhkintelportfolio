@@ -17,7 +17,8 @@
           <input type="text" class="form-control" placeholder="Value" v-model="new_data.y_value">
         </ul>
 
-      <button class="btn btn-large btn-block btn-primary full-width" @click="combined">Update</button>
+        <button class="btn btn-primary" @click="combined">Update</button>
+
     </div>
   </div>
 </template>

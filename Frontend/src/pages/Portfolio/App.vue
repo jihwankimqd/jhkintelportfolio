@@ -12,7 +12,7 @@
       <router-link to="/scatter">Scatter</router-link>
     </div>
     <router-view />
-    <!-- <Portfolio/>, -->
+
     <Navbar/>
 
   </div>
@@ -21,8 +21,8 @@
 <script>
 
 import Navbar from '../../assets/Navbar.vue'
-// import Portfolio from '../../assets/Portfolio.vue'
-
+  import 'bootstrap/dist/css/bootstrap.min.css'
+  import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
   name: 'App',
