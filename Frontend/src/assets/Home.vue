@@ -199,10 +199,12 @@ export default {
     /* margin-top: 200px; */
   }
 
-  #text {
+  /* #text {
     margin-top: -42px;
+  } */
+  #text {
+    margin-top: -35px;
   }
-
   #text a {
     color: black;
     text-decoration: none;

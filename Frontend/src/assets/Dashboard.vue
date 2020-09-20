@@ -86,7 +86,7 @@
     },
     methods: {
       fillData () {
-				let url = "http://localhost:5000/" + 'processed_data';
+				let url = "https://jhkintel.herokuapp.com/" + 'processed_data';
 				axios
 					.get(url)
 					.then(
@@ -177,7 +177,7 @@
 					});
       },
     fillDataML () {
-				let url = "http://localhost:5000/" + 'model_fitting';
+				let url = "https://jhkintel.herokuapp.com/" + 'model_fitting';
 				axios
 					.get(url)
 					.then(
@@ -225,7 +225,7 @@
       }
       console.log(newData);
       this.loading = true
-      axios.post('http://localhost:5000/processed_data', newData)
+      axios.post('https://jhkintel.herokuapp.com/processed_data', newData)
         .then((response) => {
           alert("Complete! Now Update Chart")
           this.response = response.data;
@@ -243,7 +243,7 @@
     //   }
     //   console.log(newData);
       this.loading = true
-      axios.post('http://localhost:5000/model_fitting')
+      axios.post('https://jhkintel.herokuapp.com/model_fitting')
         .then((response) => {
           alert("Complete! Now Update Chart")
           this.response = response.data;
