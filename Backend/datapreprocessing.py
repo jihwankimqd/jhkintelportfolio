@@ -6,7 +6,6 @@
 import re
 import pandas as pd
 import requests
-from bs4 import BeautifulSoup
 import pandas_datareader.data as web
 from datetime import datetime as dt
 

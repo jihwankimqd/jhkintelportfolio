@@ -28,12 +28,12 @@ db = cluster['test']
 collection_preprocessed_data = db['preprocessed_data']
 collection_model_fitting = db['model_fitting']
 
-# Data Preparation
-from flask import render_template
+# # Data Preparation
+# from flask import render_template
 
 @app.route("/")
 def index():
-   return render_template("index.html")
+   return jsonify("server")
 
 @app.route('/processed_data', methods=['GET'])
 def get_data_processed():
