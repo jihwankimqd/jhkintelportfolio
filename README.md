@@ -87,3 +87,9 @@ yarn install
 # Compiles and hot-reloads for development
 yarn serve
 ```
+depending on the machine, requirements may be needed such as:
+```
+npm install --save axios 
+npm i bootstrap-vue
+npm i vue-chartjs
+```
