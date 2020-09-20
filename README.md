@@ -4,8 +4,8 @@
 This is the deployment version of the Portfolio intel repository. For a version which only supports local development, check [Here](https://github.com/jihwankimqd/PortfolioIntel)
 
 ### Tools/Technologies Used
-Frontend: Vue.js
-Backend: Python, Flask
+Frontend: Vue.js  
+Backend: Python, Flask  
 Database: MongoDB
 
 ### Guide
