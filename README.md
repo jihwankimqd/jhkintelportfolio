@@ -15,7 +15,7 @@ This fullstack web application is a portfolio which contains 5 differnt sections
 3. Chartjs
 4. Dashboard
 5. Projects
-
+*The server is hosted on Heroku (free version), so the loading speed may be slower than on local machines.*
 ## Home
 ![Alt Text](https://raw.githubusercontent.com/jihwankimqd/PortfolioIntel/master/HOME.gif)  
   
