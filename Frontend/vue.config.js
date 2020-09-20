@@ -1,36 +1,37 @@
-const path = require('path');
+// const path = require('path');
+const target_url = 'https://jhkintel.herokuapp.com/'
 
 module.exports = {
-    outputDir: path.resolve(__dirname,'../Backend/templates'),
+    // outputDir: path.resolve(__dirname,'../Backend/templates'),
     devServer:{
       proxy: {
         '/bar':{
-          target: 'http://localhost:5000'
+          target: target_url
         },
         '/bubble':{
-          target: 'http://localhost:5000'
+          target: target_url
         },
         '/doughnut':{
-          target: 'http://localhost:5000'
+          target: target_url
         },
         '/line':{
-          target: 'http://localhost:5000'
+          target: target_url
         },
         '/pie':{
-          target: 'http://localhost:5000'
+          target: target_url
         },
         '/polararea':{
-          target: 'http://localhost:5000'
+          target: target_url
         },
         '/radar':{
-          target: 'http://localhost:5000'
+          target: target_url
         },
         '/scatter':{
-          target: 'http://localhost:5000'
+          target: target_url
         },
       }
     },
-    publicPath: '',
+    publicPath: '/jhkintelportfolio/',
 
     pages: {
       'index': {
