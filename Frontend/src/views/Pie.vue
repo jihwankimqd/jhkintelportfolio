@@ -43,7 +43,7 @@
     },
     methods: {
       fillData () {
-				let url = '/pie';
+				let url = 'https://jhkintel.herokuapp.com/pie';
 				axios
 					.get(url)
 					.then(
@@ -105,7 +105,7 @@
         y: this.new_data.y_value,
       }
       console.log(newData);
-      axios.post('/pie', newData)
+      axios.post('https://jhkintel.herokuapp.com/pie', newData)
         .then((response) => {
           this.response = response.data;
           console.log(response);

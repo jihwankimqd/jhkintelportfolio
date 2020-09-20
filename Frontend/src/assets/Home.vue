@@ -54,7 +54,19 @@
         </div>         
       </section>
 
+      <section id="projects">
+          <!-- <p>projects</p> -->
+        <div class="svg-wrapper">
 
+          <svg height="40" width="150">
+            <rect id="shape" height="40" width="150" />
+          </svg>
+
+            <div id="text">
+              <a href="projects.html">projects</a>
+            </div> 
+        </div>         
+      </section>
 
     <!-- </div> -->
 

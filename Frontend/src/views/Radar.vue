@@ -45,7 +45,7 @@
     },
     methods: {
       fillData () {
-				let url = '/radar';
+				let url = 'https://jhkintel.herokuapp.com/radar';
 				axios
 					.get(url)
 					.then(
@@ -102,7 +102,7 @@
         y: this.new_data.y_value,
       }
       console.log(newData);
-      axios.post('/radar', newData)
+      axios.post('https://jhkintel.herokuapp.com/radar', newData)
         .then((response) => {
           this.response = response.data;
           console.log(response);

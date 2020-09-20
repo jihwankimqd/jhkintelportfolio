@@ -51,7 +51,7 @@
     },
     methods: {
       fillData () {
-				let url = '/scatter';
+				let url = 'https://jhkintel.herokuapp.com/scatter';
 				axios
 					.get(url)
 					.then(
@@ -140,7 +140,7 @@
         r: this.new_data.z_value
       }
       console.log(newData);
-      axios.post('/scatter', newData)
+      axios.post('https://jhkintel.herokuapp.com/scatter', newData)
         .then((response) => {
           this.response = response.data;
           console.log(response);

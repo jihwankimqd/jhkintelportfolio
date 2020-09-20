@@ -42,7 +42,7 @@
     },
     methods: {
       fillData () {
-				let url ='/bar';
+				let url ='https://jhkintel.herokuapp.com/bar';
 				axios
 					.get(url)
 					.then(
@@ -87,7 +87,7 @@
         Close: this.new_data.y_value,
       }
       console.log(newData);
-      axios.post('/bar', newData)
+      axios.post('https://jhkintel.herokuapp.com/bar', newData)
         .then((response) => {
           this.response = response.data;
           console.log(response);

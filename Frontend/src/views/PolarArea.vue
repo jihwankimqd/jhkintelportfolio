@@ -47,7 +47,7 @@
     },
     methods: {
       fillData () {
-				let url = '/polararea';
+				let url = 'https://jhkintel.herokuapp.com/polararea';
 				axios
 					.get(url)
 					.then(
@@ -108,7 +108,7 @@
         y: this.new_data.y_value,
       }
       // console.log(newData);
-      axios.post('/polararea', newData)
+      axios.post('https://jhkintel.herokuapp.com/polararea', newData)
         .then((response) => {
           this.response = response.data;
           console.log(response);
