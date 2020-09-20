@@ -45,3 +45,29 @@ When **Process Data** is clicked, the input stock symbol (e.g. '096770') is sent
 ![Alt Text](https://raw.githubusercontent.com/jihwankimqd/PortfolioIntel/master/PROJECTS.gif)  
   
 A gallery of personal projects. The images are gifs and ordered neatly using the Vue-Bootstrap components. The images can be clicked and it will redirect the page to the clicked project. Details of individual projects can be found in their respective links.
+
+
+## Deploy Locally
+  
+To deploy the project locally, simply clone/download the repository. The server and client apps have to be deployed separately. 
+1. Download all the dependencies such as Python, Pymongo, Flask, Flask_Cors, Pandas... (Best practice is to run the file first and check the logs to download the requirements which you may be missing.) The application was developed on MacOS, and when tested on a Windows (with different settings and missing requirements), the missing dependencies had been downloaded using 
+```
+pip install pymongo
+pip install flask
+pip install flask_cors
+pip install pandas
+pip install requests
+pip install pandas_datareader
+pip install dnspython
+```
+The specific requirements/dependencies will vary on different machines.  
+2. After downloading the requirements (if needed), direct into the /Backend folder and run 
+```
+python app.py
+```
+3. The server will be running on:
+```
+ * Running on http://127.0.0.1:5000/
+```
+4. Now change the directory into the /Frontend folder
+5. 
