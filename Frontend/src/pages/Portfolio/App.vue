@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    
     <div id="chartnav">
+      <h3>Pick a Chart!</h3>
       <router-link to="/line">Line</router-link> |
       <router-link to="/bar">Bar</router-link> |
       <router-link to="/doughnut">Doughnut</router-link> |
@@ -46,5 +46,6 @@ export default {
 
   #chartnav{
     margin-top:35px;
+    font-size:27px;
   }
 </style>

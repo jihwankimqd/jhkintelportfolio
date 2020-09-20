@@ -1,6 +1,15 @@
 <template>
   <!-- <div class="small"> -->
   <div class='size'>
+  <div v-if="loading">
+      <div class="brand_landing">
+        <div id="landing">
+          <p>loading...</p>
+        </div>
+      </div>
+      <div class="bg"></div> 
+  </div>
+  <div v-else>
     <doughnut-chart :chart-data="datacollection" class='chart'></doughnut-chart>
 
       <div class="dataform">
@@ -22,6 +31,7 @@
 
 
       </div>
+    </div>
   </div>
 </template>
 
@@ -37,7 +47,7 @@
       return {
         datacollection: null,
         new_data: { x_value: 'Seoul', y_value: '100'},
-
+        loading: false,
       }
     },
     mounted () {
@@ -45,7 +55,8 @@
     },
     methods: {
       fillData () {
-				let url = 'https://jhkintel.herokuapp.com/doughnut';
+        let url = 'https://jhkintel.herokuapp.com/doughnut';
+        this.loading = true
 				axios
 					.get(url)
 					.then(
@@ -96,9 +107,8 @@
 					)
 					.catch(function (error) {
                         console.log(error)
-
-                    
-					});
+        }).finally(() => (this.loading = false))
+        ;
       },
     addToAPI() {
 
@@ -107,6 +117,7 @@
         y: this.new_data.y_value,
       }
       console.log(newData);
+      this.loading = true
       axios.post('https://jhkintel.herokuapp.com/doughnut', newData)
         .then((response) => {
           this.response = response.data;
@@ -114,7 +125,8 @@
         })
         .catch((error) => {
           console.log(error);
-        });
+        }).finally(() => (this.loading = false))
+        ;
     },
 
     combined(){

@@ -102,7 +102,7 @@
       this.loading = true
       axios.post('https://jhkintel.herokuapp.com/line', newData)
         .then((response) => {
-          alert("Complete! Now Update Chart")
+          alert("Complete!")
           this.response = response.data;
           console.log(response);
         })
