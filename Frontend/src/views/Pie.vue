@@ -43,7 +43,7 @@
     },
     methods: {
       fillData () {
-				let url = "http://localhost:5000/" + 'pie';
+				let url = '/pie';
 				axios
 					.get(url)
 					.then(
@@ -105,7 +105,7 @@
         y: this.new_data.y_value,
       }
       console.log(newData);
-      axios.post('http://localhost:5000/pie', newData)
+      axios.post('/pie', newData)
         .then((response) => {
           this.response = response.data;
           console.log(response);

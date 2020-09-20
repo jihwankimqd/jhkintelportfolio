@@ -44,7 +44,7 @@
     },
     methods: {
       fillData () {
-				let url = "http://localhost:5000/" + 'line';
+				let url ='/line';
 				axios
 					.get(url)
 					.then(
@@ -92,7 +92,7 @@
         Close: this.new_data.y_value,
       }
       console.log(newData);
-      axios.post('http://localhost:5000/line', newData)
+      axios.post('/line', newData)
         .then((response) => {
           this.response = response.data;
           console.log(response);

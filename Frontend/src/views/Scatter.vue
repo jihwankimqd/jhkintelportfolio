@@ -51,7 +51,7 @@
     },
     methods: {
       fillData () {
-				let url = "http://localhost:5000/" + 'scatter';
+				let url = '/scatter';
 				axios
 					.get(url)
 					.then(
@@ -140,7 +140,7 @@
         r: this.new_data.z_value
       }
       console.log(newData);
-      axios.post('http://localhost:5000/scatter', newData)
+      axios.post('/scatter', newData)
         .then((response) => {
           this.response = response.data;
           console.log(response);

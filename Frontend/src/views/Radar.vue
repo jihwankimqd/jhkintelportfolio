@@ -45,7 +45,7 @@
     },
     methods: {
       fillData () {
-				let url = "http://localhost:5000/" + 'radar';
+				let url = '/radar';
 				axios
 					.get(url)
 					.then(
@@ -102,7 +102,7 @@
         y: this.new_data.y_value,
       }
       console.log(newData);
-      axios.post('http://localhost:5000/radar', newData)
+      axios.post('/radar', newData)
         .then((response) => {
           this.response = response.data;
           console.log(response);

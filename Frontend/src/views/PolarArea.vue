@@ -47,7 +47,7 @@
     },
     methods: {
       fillData () {
-				let url = "http://localhost:5000/" + 'polararea';
+				let url = '/polararea';
 				axios
 					.get(url)
 					.then(
@@ -108,7 +108,7 @@
         y: this.new_data.y_value,
       }
       // console.log(newData);
-      axios.post('http://localhost:5000/polararea', newData)
+      axios.post('/polararea', newData)
         .then((response) => {
           this.response = response.data;
           console.log(response);

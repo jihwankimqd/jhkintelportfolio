@@ -1,4 +1,35 @@
+const path = require('path');
+
 module.exports = {
+    outputDir: path.resolve(__dirname,'../Backend/public'),
+    devServer:{
+      proxy: {
+        '/bar':{
+          target: 'http://localhost:5000'
+        },
+        '/bubble':{
+          target: 'http://localhost:5000'
+        },
+        '/doughnut':{
+          target: 'http://localhost:5000'
+        },
+        '/line':{
+          target: 'http://localhost:5000'
+        },
+        '/pie':{
+          target: 'http://localhost:5000'
+        },
+        '/polararea':{
+          target: 'http://localhost:5000'
+        },
+        '/radar':{
+          target: 'http://localhost:5000'
+        },
+        '/scatter':{
+          target: 'http://localhost:5000'
+        },
+      }
+    },
     publicPath: '/intelportfolio/',
 
     pages: {

@@ -45,7 +45,7 @@
     },
     methods: {
       fillData () {
-				let url = "http://localhost:5000/" + 'doughnut';
+				let url = '/doughnut';
 				axios
 					.get(url)
 					.then(
@@ -107,7 +107,7 @@
         y: this.new_data.y_value,
       }
       console.log(newData);
-      axios.post('http://localhost:5000/doughnut', newData)
+      axios.post('/doughnut', newData)
         .then((response) => {
           this.response = response.data;
           console.log(response);

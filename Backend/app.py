@@ -11,7 +11,7 @@ from modelfitting import modelfitting
 DEBUG = True
 
 # instantiate the app
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../public/')
 # app.config.from_object(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
 # enable CORS
@@ -29,6 +29,14 @@ collection_preprocessed_data = db['preprocessed_data']
 collection_model_fitting = db['model_fitting']
 
 # Data Preparation
+from flask import current_app, send_file
+import os
+
+@app.route('/')
+def index_client():
+    dist_dir = current_app.config['DIST_DIR']
+    entry = os.path.join(dist_dir, '/public/index.html')
+    return send_file(entry)
 
 @app.route('/processed_data', methods=['GET'])
 def get_data_processed():

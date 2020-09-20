@@ -49,7 +49,7 @@
     },
     methods: {
       fillData () {
-				let url = "http://localhost:5000/" + 'bubble';
+				let url = '/bubble';
 				axios
 					.get(url)
 					.then(
@@ -121,7 +121,7 @@
         r: this.new_data.z_value
       }
       console.log(newData);
-      axios.post('http://localhost:5000/bubble', newData)
+      axios.post('/bubble', newData)
         .then((response) => {
           this.response = response.data;
           console.log(response);
