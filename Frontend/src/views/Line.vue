@@ -1,26 +1,31 @@
 <template>
-  <div class = 'medium'>
-  <!-- <div class="chart"> -->
-    <line-chart :chart-data="datacollection" class = "chart"></line-chart>
-
-      <div class="dataform">
-          <h4> Add/Remove Data</h4>
-
-        <!-- <h4> Add Data</h4> -->
-        <!-- <p> Removes Duplicates</p> -->
-
-        <ul>
-          <label class="pull-left"> x value </label>
-          <input type="text" class="form-control" placeholder="Date" v-model="new_data.x_value">
-        </ul>
-        <ul>
-          <label class="pull-left"> y value </label>
-          <input type="text" class="form-control" placeholder="Close" v-model="new_data.y_value">
-        </ul>
-
-        <button class="btn btn-primary" @click="combined">Update</button>
-
+  <div class ="medium">
+    <div v-if="loading">
+      <div class="brand_landing">
+        <div id="landing">
+          <p>loading...</p>
+        </div>
       </div>
+      <div class="bg"></div> 
+  </div>
+  <div v-else>
+  <!-- <div class="small"> -->
+    <line-chart :chart-data="datacollection" class="chart"></line-chart>
+        <div class="dataform">
+
+          <h4> Add/Remove Data</h4>
+          <!-- <p> Removes Duplicates</p> -->
+            <ul>
+              <label> x value </label>
+              <input type="text" class="form-control" placeholder="Date" v-model="new_data.x_value">
+            </ul>
+            <ul>
+              <label> y value </label>
+              <input type="text" class="form-control " placeholder="Close" v-model="new_data.y_value">
+            </ul>
+        <button class="btn btn-primary" @click="combined">Update</button>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -36,6 +41,7 @@
       return {
         datacollection: null,
         new_data: { x_value: '2020-09-21', y_value: '65000'},
+        loading: false,
 
       }
     },
@@ -44,7 +50,9 @@
     },
     methods: {
       fillData () {
-				let url ='https://jhkintel.herokuapp.com/line';
+        let url ='https://jhkintel.herokuapp.com/line';
+        this.loading = true
+        
 				axios
 					.get(url)
 					.then(
@@ -81,9 +89,8 @@
 					)
 					.catch(function (error) {
                         console.log(error)
-
-                    
-					});
+        }).finally(() => (this.loading = false))
+        ;
       },
     addToAPI() {
 
@@ -92,14 +99,17 @@
         Close: this.new_data.y_value,
       }
       console.log(newData);
+      this.loading = true
       axios.post('https://jhkintel.herokuapp.com/line', newData)
         .then((response) => {
+          alert("Complete! Now Update Chart")
           this.response = response.data;
           console.log(response);
         })
         .catch((error) => {
           console.log(error);
-        });
+        }).finally(() => (this.loading = false))
+        ;
     },
 
     combined(){
