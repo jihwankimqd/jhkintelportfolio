@@ -1,4 +1,4 @@
-# jhkintelportfolio
+# Ji Hwan KIM Intel Portfolio
 # Live Demo at: https://jihwankimqd.github.io/jhkintelportfolio/
 
 This is the deployment version of the Portfolio intel repository.
