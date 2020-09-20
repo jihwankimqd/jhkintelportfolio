@@ -54,7 +54,6 @@
       fillData () {
         let url ='https://jhkintel.herokuapp.com/bar';
         this.loading = true
-        
 				axios
 					.get(url)
 					.then(
