@@ -70,4 +70,19 @@ python app.py
  * Running on http://127.0.0.1:5000/
 ```
 4. Now change the directory into the /Frontend folder
-5. 
+5. Install the requirements/dependencies and make sure you have Vue.js installed. Then run the follow commands:
+```
+# Using npm
+# Project Setup
+npm install
+
+# Compiles and hot-reloads for development
+npm run serve
+
+# Using yarn
+# Project Setup
+yarn install
+
+# Compiles and hot-reloads for development
+yarn serve
+```
