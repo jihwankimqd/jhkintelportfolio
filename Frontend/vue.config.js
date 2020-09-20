@@ -3,34 +3,34 @@ const target_url = 'https://jhkintel.herokuapp.com/'
 
 module.exports = {
     // outputDir: path.resolve(__dirname,'../Backend/templates'),
-    devServer:{
-      proxy: {
-        '/bar':{
-          target: target_url
-        },
-        '/bubble':{
-          target: target_url
-        },
-        '/doughnut':{
-          target: target_url
-        },
-        '/line':{
-          target: target_url
-        },
-        '/pie':{
-          target: target_url
-        },
-        '/polararea':{
-          target: target_url
-        },
-        '/radar':{
-          target: target_url
-        },
-        '/scatter':{
-          target: target_url
-        },
-      }
-    },
+    // devServer:{
+    //   proxy: {
+    //     '/bar':{
+    //       target: target_url
+    //     },
+    //     '/bubble':{
+    //       target: target_url
+    //     },
+    //     '/doughnut':{
+    //       target: target_url
+    //     },
+    //     '/line':{
+    //       target: target_url
+    //     },
+    //     '/pie':{
+    //       target: target_url
+    //     },
+    //     '/polararea':{
+    //       target: target_url
+    //     },
+    //     '/radar':{
+    //       target: target_url
+    //     },
+    //     '/scatter':{
+    //       target: target_url
+    //     },
+    //   }
+    // },
     publicPath: '/jhkintelportfolio/',
 
     pages: {
