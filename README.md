@@ -9,7 +9,7 @@ Backend: Python, Flask
 Database: MongoDB
 
 ## Guide
-This fullstack web application is a portfolio which contains 5 differnt sections which can be accessed in the HOME page or using the Navbar. The application is divided into:
+This fullstack web application is a portfolio which contains 5 differnt sections which can be accessed in the Home page or using the Navbar. The application is divided into:
 1. Home
 2. About
 3. Chartjs
