@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    outputDir: path.resolve(__dirname,'../Backend/public'),
+    outputDir: path.resolve(__dirname,'../Backend/templates'),
     devServer:{
       proxy: {
         '/bar':{
@@ -30,7 +30,7 @@ module.exports = {
         },
       }
     },
-    publicPath: '/intelportfolio/',
+    publicPath: '',
 
     pages: {
       'index': {
