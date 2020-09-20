@@ -34,7 +34,14 @@ Can pick a desired chart type (from Chartjs), and the page will send a response 
 ## Dashboard
 ![Alt Text](https://raw.githubusercontent.com/jihwankimqd/PortfolioIntel/master/DASHBOARD.gif)  
   
-A Machine Learning Dashboard, which shows multiple charts of stock data. The three charts above show analysed data, and the single chart below shows the predicted price for a given stock. The stock symbol should be entered instead of the name  
+A **Machine Learning Dashboard**, which shows multiple charts of stock data. The three charts above show analysed data, and the single chart below shows the predicted price for a given stock. The stock symbol should be entered instead of the name  
 (e.g 삼성전자(x) 005930(o), SK이노베이션(x) 096770(o) ).  
 **Click Process Data/Process Data Machine Learning First** and then wait for the loading screen to finish and the webpage should give an alert when the loading is completed. **Then, click Update Chart/Update Chart Machine Learning** to update the charts. The process may take some time, because the server is deployed (for free) on Heroku, which is not very fast. To experience faster loading time, clone/download the repository and run the files locally.  
 When **Process Data** is clicked, the input stock symbol (e.g. '096770') is sent the the server which runs a python script to scrape the data and clean it. Numerous features are gathered (Stock Data, Dow Jows Index Closing Price, Korean Interest Rates, WTI Oil Prices, USD to KRW Exchange Rates). Initially, the stock data was scraped using BeautifulSoup, but the process took too long, and was therefore substituted by an API. The collected data is cleaned and processed in the 'datapreprocessing.py' file in the server, and  the resultant data is fed into the 'modelfitting.py' file which uses scikit-learn to apply ML Models to output a predicted price. The output results (predicted price for the stock) is then updated in the database and sent to the server which is then received by the frontend.
+
+
+
+## Projects
+![Alt Text](https://raw.githubusercontent.com/jihwankimqd/PortfolioIntel/master/PROJECTS.gif)  
+  
+A gallery of personal projects. The images are gifs and ordered neatly using the Vue-Bootstrap components. The images can be clicked and it will redirect the page to the clicked project. Details of individual projects can be found in their respective links.
