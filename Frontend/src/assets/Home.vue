@@ -6,7 +6,7 @@
       <section id="home">
           <div class="brand_landing">
             <div id="landing">
-              <p>TESTINGTESTING</p>
+              <p>JHK</p>
             </div>
           </div>
           <div class="bg"></div> 
